@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>物質の性質と反応</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reactions.css') }}">
+    <script src="{{ url_for('static', filename='js/reactions.js') }}" defer></script>
+</head>
+<body>
+    <header>
+        <h1>物質の性質と反応</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">メインメニューに戻る</a>
+        </nav>
+    </header>
+    <main>
+        <h2>物質の性質を入力してください</h2>
+        <form id="reactionForm">
+            <label for="propertyInput">性質 (例: 酸化、還元、酸、塩基): </label>
+            <input type="text" id="propertyInput" name="property" required>
+            <button type="submit">反応を確認する</button>
+        </form>
+        <div id="result"></div>
+    </main>
+    <footer>
+        <p>© 2024 Rub</p>
+    </footer>
+</body>
+</html>

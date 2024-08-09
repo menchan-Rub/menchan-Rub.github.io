@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>化学反応式のバランス</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/balance.css') }}">
+    <script src="{{ url_for('static', filename='js/balance.js') }}" defer></script>
+</head>
+<body>
+    <header>
+        <h1>化学反応式のバランス</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">メインメニューに戻る</a>
+        </nav>
+    </header>
+    <main>
+        <h2>化学反応式を入力してください</h2>
+        <form id="balanceForm">
+            <label for="reactionInput">反応式 (例: H2 + O2 -> H2O): </label>
+            <input type="text" id="reactionInput" name="reaction" required>
+            <button type="submit">バランスを取る</button>
+        </form>
+        <div id="result"></div>
+    </main>
+    <footer>
+        <p>© 2024 Rub</p>
+    </footer>
+</body>
+</html>

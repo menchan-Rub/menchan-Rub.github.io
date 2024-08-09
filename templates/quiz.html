@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>化学式クイズ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/quiz.css') }}">
+    <script src="{{ url_for('static', filename='js/quiz.js') }}" defer></script>
+</head>
+<body>
+    <header>
+        <h1>化学式クイズ</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">メインメニューに戻る</a>
+        </nav>
+    </header>
+    <main>
+        <h2>物質名に対応する化学式を入力してください</h2>
+        <form id="quizForm">
+            <label for="substanceInput">物質名: </label>
+            <input type="text" id="substanceInput" name="substance" required>
+            <label for="formulaInput">化学式: </label>
+            <input type="text" id="formulaInput" name="formula" required>
+            <button type="submit">回答する</button>
+        </form>
+        <div id="result"></div>
+        <button id="nextButton" style="display:none;">次の問題</button>
+        <button id="addQuestionButton">新しい質問を追加</button>
+    </main>
+    <footer>
+        <p>© 2024 Rub</p>
+    </footer>
+</body>
+</html>

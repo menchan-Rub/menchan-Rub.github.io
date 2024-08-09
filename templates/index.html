@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自由研究用のプログラム</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+</head>
+<body>
+    <header>
+        <h1>自由研究用のプログラム</h1>
+        <p>制作者名: Rub</p>
+    </header>
+    <main>
+        <h2>テーマを選択してください</h2>
+        <ul>
+            <li><a href="{{ url_for('balance') }}">テーマ1: 化学反応式のバランス</a></li>
+            <li><a href="{{ url_for('reactions') }}">テーマ2: 物質の性質と反応</a></li>
+            <li><a href="{{ url_for('quiz') }}">テーマ3: 化学式クイズ</a></li>
+            <li><a href="{{ url_for('modeling') }}">テーマ4: 分子モデル生成</a></li>
+            <li><a href="{{ url_for('energy') }}">テーマ5: 化学反応のエネルギー変化</a></li>
+        </ul>
+    </main>
+    <footer>
+        <p>© 2024 Rub</p>
+    </footer>
+</body>
+</html>
