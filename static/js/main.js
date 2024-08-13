@@ -19,24 +19,5 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.location.href = targetUrl;
             }, 500);
         });
-
-        link.addEventListener('focus', () => {
-            link.style.outline = '2px solid #ff6f61';
-        });
-
-        link.addEventListener('blur', () => {
-            link.style.outline = 'none';
-        });
     });
-
-    const resizeHandler = () => {
-        if (window.innerWidth < 600) {
-            document.querySelector('main').style.padding = '10px';
-        } else {
-            document.querySelector('main').style.padding = '20px';
-        }
-    };
-
-    window.addEventListener('resize', resizeHandler);
-    resizeHandler();
 });
