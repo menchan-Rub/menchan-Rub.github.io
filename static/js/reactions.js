@@ -5,14 +5,14 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        const propertyInput = document.getElementById('propertyInput').value;
+        const propertySelect = document.getElementById('propertySelect').value;
 
         fetch('/reactions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ property: propertyInput })
+            body: JSON.stringify({ property: propertySelect })
         })
         .then(response => response.json())
         .then(data => {

@@ -1,67 +1,57 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('quizForm');
+    let questions = [];
+    let currentQuestion = 0;
+    const questionElement = document.getElementById('question');
+    const optionsElement = document.getElementById('options');
+    const submitButton = document.getElementById('submit-button');
     const resultDiv = document.getElementById('result');
-    const nextButton = document.getElementById('nextButton');
-    const addQuestionButton = document.getElementById('addQuestionButton');
-    
-    let questions = JSON.parse('{{ quiz_data | tojson | safe }}');
-    let currentQuestionIndex = 0;
-    let score = 0;
 
-    function displayNextQuestion() {
-        const questionKeys = Object.keys(questions);
-        if (currentQuestionIndex < questionKeys.length) {
-            const substance = questionKeys[currentQuestionIndex];
-            document.getElementById('substanceInput').value = substance;
-            document.getElementById('formulaInput').value = '';
-            resultDiv.innerText = '';
+    fetch('/static/quiz_data.json')
+        .then(response => response.json())
+        .then(data => {
+            questions = data.sort(() => 0.5 - Math.random()).slice(0, 5);
+            loadQuestion();
+        });
+
+    function loadQuestion() {
+        const question = questions[currentQuestion];
+        questionElement.textContent = question.question;
+        optionsElement.innerHTML = ''; // 既存の選択肢をクリア
+
+        question.options.forEach((option, index) => {
+            const optionElement = document.createElement('option');
+            optionElement.textContent = option;
+            optionElement.value = index;
+            optionsElement.appendChild(optionElement);
+        });
+    }
+
+    submitButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        const selectedOption = optionsElement.value;
+        checkAnswer(selectedOption);
+    });
+
+    function checkAnswer(selectedAnswer) {
+        const question = questions[currentQuestion];
+        if (selectedAnswer == question.correctAnswer) {
+            alert('正解！');
         } else {
-            resultDiv.innerHTML = `クイズが終了しました。スコア: ${score}/${questionKeys.length}`;
-            nextButton.style.display = 'none';
+            alert('不正解...');
+        }
+
+        currentQuestion++;
+        if (currentQuestion < questions.length) {
+            loadQuestion();
+        } else {
+            showResults();
         }
     }
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const substanceInput = document.getElementById('substanceInput').value;
-        const formulaInput = document.getElementById('formulaInput').value;
-
-        fetch('/quiz', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ substance: substanceInput, formula: formulaInput })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.correct) {
-                score++;
-                resultDiv.innerHTML = '<strong>正解！</strong>';
-            } else {
-                resultDiv.innerHTML = `<strong>不正解。</strong> 正しい答えは ${data.correct_answer} です。`;
-            }
-            nextButton.style.display = 'block';
-        })
-        .catch(error => {
-            resultDiv.innerHTML = `<strong>エラー:</strong> ${error.message}`;
-        });
-    });
-
-    nextButton.addEventListener('click', () => {
-        currentQuestionIndex++;
-        displayNextQuestion();
-    });
-
-    addQuestionButton.addEventListener('click', () => {
-        const newSubstance = prompt('新しい物質名を入力してください:');
-        const newFormula = prompt('その物質の化学式を入力してください:');
-        if (newSubstance && newFormula) {
-            questions[newSubstance] = newFormula;
-            alert('新しい質問が追加されました。');
-        }
-    });
-
-    displayNextQuestion();
+    function showResults() {
+        questionElement.textContent = 'クイズが終了しました！';
+        optionsElement.style.display = 'none';
+        submitButton.style.display = 'none';
+        resultDiv.innerHTML = `<strong>あなたのスコア:</strong> ${currentQuestion} / ${questions.length}`;
+    }
 });

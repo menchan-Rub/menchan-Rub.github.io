@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>自由研究用のプログラム</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
 </head>
@@ -18,8 +19,7 @@
             <li><a href="{{ url_for('balance') }}">テーマ1: 化学反応式のバランス</a></li>
             <li><a href="{{ url_for('reactions') }}">テーマ2: 物質の性質と反応</a></li>
             <li><a href="{{ url_for('quiz') }}">テーマ3: 化学式クイズ</a></li>
-            <li><a href="{{ url_for('modeling') }}">テーマ4: 分子モデル生成</a></li>
-            <li><a href="{{ url_for('energy') }}">テーマ5: 化学反応のエネルギー変化</a></li>
+            <li><a href="{{ url_for('element_search') }}">テーマ4: 元素・物質検索</a></li>
         </ul>
     </main>
     <footer>

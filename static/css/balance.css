@@ -76,6 +76,7 @@ button {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s;
+    margin-top: 10px;
 }
 
 button:hover {
@@ -90,4 +91,27 @@ button:hover {
     color: #ddd;
     font-size: 18px;
     border-radius: 5px;
+}
+
+.styled-dropdown {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #222; /* 背景色を統一 */
+    color: #ddd; /* テキスト色を統一 */
+}
+
+#balancedResult {
+    word-wrap: break-word; /* 長いテキストを折り返す */
+    white-space: pre-wrap; /* 空白を保持しつつ折り返す */
+    overflow-wrap: break-word; /* 単語の途中で折り返す */
+    max-width: 100%; /* 最大幅を100%に設定 */
+    margin: 10px 0; /* 上下のマージンを追加 */
+    padding: 10px; /* 内側のパディングを追加 */
+    border: 1px solid #444; /* 枠線を追加 */
+    background-color: #222; /* 背景色を設定 */
+    color: #ddd; /* テキスト色を設定 */
+    border-radius: 5px; /* 角を丸くする */
 }

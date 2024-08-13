@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>化学反応式のバランス</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/balance.css') }}">
     <script src="{{ url_for('static', filename='js/balance.js') }}" defer></script>
 </head>
@@ -15,16 +16,63 @@
         </nav>
     </header>
     <main>
-        <h2>化学反応式を入力してください</h2>
+        <h2>化学反応式を選択してください</h2>
         <form id="balanceForm">
-            <label for="reactionInput">反応式 (例: H2 + O2 -> H2O): </label>
-            <input type="text" id="reactionInput" name="reaction" required>
+            <label for="reactionSelect">反応式:</label>
+            <select id="reactionSelect" name="reaction" class="styled-dropdown" required>
+                <option value="H2 + O2 -> H2O">H2 + O2 -> H2O</option>
+                <option value="C + O2 -> CO">C + O2 -> CO</option>
+                <option value="Na + Cl2 -> NaCl">Na + Cl2 -> NaCl</option>
+                <option value="CH4 + O2 -> CO2 + H2O">CH4 + O2 -> CO2 + H2O</option>
+            </select>
             <button type="submit">バランスを取る</button>
         </form>
+        
+        <div id="balancedEquation" style="display: none;">
+            <h3>バランスの取れた反応式:</h3>
+            <p id="balancedResult" class="result-text"></p>
+        </div>
+        
         <div id="result"></div>
+        
+        <button id="backButton" onclick="window.location.href='{{ url_for('index') }}'">メインメニューに戻る</button>
     </main>
     <footer>
         <p>© 2024 Rub</p>
     </footer>
+    <script>
+        document.getElementById('balanceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const reactionInput = document.getElementById('reactionSelect').value;
+
+            fetch('/balance', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ reaction: reactionInput })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                document.getElementById('result').innerHTML = ''; // ここでリセット
+                document.getElementById('balancedEquation').style.display = 'none'; // 初期状態に戻す
+
+                if (data.success) {
+                    document.getElementById('balancedResult').innerText = data.balanced_equation;
+                    document.getElementById('balancedEquation').style.display = 'block';
+                } else {
+                    document.getElementById('result').innerHTML = `<strong>エラー:</strong> ${data.error}`;
+                }
+            })
+            .catch(error => {
+                document.getElementById('result').innerHTML = `<strong>エラー:</strong> ${error.message}`;
+            });
+        });
+    </script>
 </body>
 </html>

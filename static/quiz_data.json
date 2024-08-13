@@ -1,0 +1,97 @@
+[
+    {
+        "question": "化学式 H2O は何を表していますか？",
+        "options": ["酸素", "水", "二酸化炭素", "アンモニア"],
+        "correctAnswer": 1
+    },
+    {
+        "question": "化学式 CO2 は何を表していますか？",
+        "options": ["酸素", "水", "二酸化炭素", "アンモニア"],
+        "correctAnswer": 2
+    },
+    {
+        "question": "化学式 NaCl は何を表していますか？",
+        "options": ["塩", "水", "酸", "塩基"],
+        "correctAnswer": 0
+    },
+    {
+        "question": "化学式 NH3 は何を表していますか？",
+        "options": ["アンモニア", "水", "二酸化炭素", "酸素"],
+        "correctAnswer": 0
+    },
+    {
+        "question": "化学式 H2SO4 は何を表していますか？",
+        "options": ["硫酸", "塩酸", "硝酸", "酢酸"],
+        "correctAnswer": 0
+    },
+    {
+        "question": "化学式 HNO3 は何を表していますか？",
+        "options": ["硝酸", "硫酸", "塩酸", "水"],
+        "correctAnswer": 0
+    },
+    {
+        "question": "化学式 CH4 は何を表していますか？",
+        "options": ["メタン", "エタン", "プロパン", "ブタン"],
+        "correctAnswer": 0
+    },
+    {
+        "question": "化学式 C6H12O6 は何を表していますか？",
+        "options": ["グルコース", "フルクトース", "スクロース", "ラクトース"],
+        "correctAnswer": 0
+    },
+    {
+        "question": "化学式 CaCO3 は何を表していますか？",
+        "options": ["炭酸カルシウム", "硫酸カルシウム", "塩化カルシウム", "酸化カルシウム"],
+        "correctAnswer": 0
+    },
+    {
+        "question": "化学式 NaOH は何を表していますか？",
+        "options": ["水酸化ナトリウム", "塩化ナトリウム", "硫酸ナトリウム", "炭酸ナトリウム"],
+        "correctAnswer": 0
+    },
+    {
+        "question": "化学式 H2O2 は何を表していますか？",
+        "options": ["過酸化水素", "水", "酸素", "二酸化炭素"],
+        "correctAnswer": 0
+    },
+    {
+        "question": "化学式 C2H5OH は何を表していますか？",
+        "options": ["エタノール", "メタノール", "プロパノール", "ブタノール"],
+        "correctAnswer": 0
+    },
+    {
+        "question": "化学式 KCl は何を表していますか？",
+        "options": ["塩化カリウム", "塩化ナトリウム", "硫酸カリウム", "炭酸カリウム"],
+        "correctAnswer": 0
+    },
+    {
+        "question": "化学式 Fe2O3 は何を表していますか？",
+        "options": ["酸化鉄(III)", "酸化鉄(II)", "硫酸鉄", "塩化鉄"],
+        "correctAnswer": 0
+    },
+    {
+        "question": "化学式 AgNO3 は何を表していますか？",
+        "options": ["硝酸銀", "塩化銀", "硫酸銀", "酸化銀"],
+        "correctAnswer": 0
+    },
+    {
+        "question": "化学式 C3H8 は何を表していますか？",
+        "options": ["プロパン", "ブタン", "エタン", "メタン"],
+        "correctAnswer": 0
+    },
+    {
+        "question": "化学式 HCl は何を表していますか？",
+        "options": ["塩酸", "硫酸", "硝酸", "酢酸"],
+        "correctAnswer": 0
+    },
+    {
+        "question": "化学式 Na2SO4 は何を表していますか？",
+        "options": ["硫酸ナトリウム", "塩化ナトリウム", "炭酸ナトリウム", "硝酸ナトリウム"],
+        "correctAnswer": 0
+    },
+    {
+        "question": "化学式 C6H14 は何を表していますか？",
+        "options": ["ヘキサン", "ペンタン", "ブタン", "オクタン"],
+        "correctAnswer": 0
+    }
+]

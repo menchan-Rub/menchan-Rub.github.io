@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>物質の性質と反応</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/reactions.css') }}">
     <script src="{{ url_for('static', filename='js/reactions.js') }}" defer></script>
 </head>
@@ -15,13 +16,18 @@
         </nav>
     </header>
     <main>
-        <h2>物質の性質を入力してください</h2>
+        <h2>物質の性質を選択してください</h2>
         <form id="reactionForm">
-            <label for="propertyInput">性質 (例: 酸化、還元、酸、塩基): </label>
-            <input type="text" id="propertyInput" name="property" required>
+            <select id="propertySelect" name="property">
+                <option value="酸化">酸化</option>
+                <option value="還元">還元</option>
+                <option value="酸">酸</option>
+                <option value="塩基">塩基</option>
+            </select>
             <button type="submit">反応を確認する</button>
         </form>
         <div id="result"></div>
+        <button id="backButton" onclick="window.location.href='{{ url_for('index') }}'">メインメニューに戻る</button>
     </main>
     <footer>
         <p>© 2024 Rub</p>

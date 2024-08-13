@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素・物質検索</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/element_search.css') }}">
+    <script src="{{ url_for('static', filename='js/element_search.js') }}" defer></script>
+</head>
+<body>
+    <header>
+        <h1>元素・物質検索</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">メインメニューに戻る</a>
+        </nav>
+    </header>
+    <main>
+        <h2>元素名、元素記号、または物質名を入力してください</h2>
+        <form id="searchForm">
+            <input type="text" id="searchInput" placeholder="例: 水素、H、H2O" required>
+            <button type="submit">検索</button>
+        </form>
+        <div id="result"></div>
+        <h3>検索可能な物質リスト：</h3>
+        <ul id="searchableList">
+            {% for item in searchable_items %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </main>
+    <footer>
+        <p>© 2024 Rub</p>
+    </footer>
+</body>
+</html>
