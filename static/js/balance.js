@@ -4,37 +4,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const balancedEquationDiv = document.getElementById('balancedEquation');
     const balancedResult = document.getElementById('balancedResult');
 
+    const balanceData = {
+        "H2 + O2 -> H2O": "2H2 + O2 -> 2H2O",
+        "C + O2 -> CO": "2C + O2 -> 2CO",
+        "Na + Cl2 -> NaCl": "2Na + Cl2 -> 2NaCl",
+        "CH4 + O2 -> CO2 + H2O": "CH4 + 2O2 -> CO2 + 2H2O"
+    };
+
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        const reactionInput = document.getElementById('reactionSelect').value; // Changed this line
+        const reactionInput = document.getElementById('reactionSelect').value;
 
-        fetch('/balance', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ reaction: reactionInput })
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            if (data.success) {
-                resultDiv.innerHTML = '';
-                balancedEquationDiv.style.display = 'block';
-                balancedResult.innerText = data.balanced_equation;
-            } else {
-                resultDiv.innerHTML = `<strong>エラー:</strong> ${data.error}`;
-                balancedEquationDiv.style.display = 'none';
-            }
-        })
-        .catch(error => {
-            resultDiv.innerHTML = `<strong>エラー:</strong> ${error.message}`;
+        const balancedEquation = balanceData[reactionInput];
+        if (balancedEquation) {
+            resultDiv.innerHTML = '';
+            balancedEquationDiv.style.display = 'block';
+            balancedResult.innerText = balancedEquation;
+        } else {
+            resultDiv.innerHTML = '<strong>エラー:</strong> バランスの取れた方程式が見つかりませんでした。';
             balancedEquationDiv.style.display = 'none';
-        });
+        }
     });
 });

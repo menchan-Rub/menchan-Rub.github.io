@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>元素・物質検索</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/element_search.css') }}">
-    <script src="{{ url_for('static', filename='js/element_search.js') }}" defer></script>
+    <link rel="stylesheet" href="static/css/common.css">
+    <link rel="stylesheet" href="static/css/element_search.css">
+    <script src="static/js/element_search.js" defer></script>
 </head>
 <body>
     <header>
         <h1>元素・物質検索</h1>
         <nav>
-            <a href="{{ url_for('index') }}">メインメニューに戻る</a>
+            <a href="index.html">メインメニューに戻る</a>
         </nav>
     </header>
     <main>
@@ -24,9 +24,17 @@
         <div id="result"></div>
         <h3>検索可能な物質リスト：</h3>
         <ul id="searchableList">
-            {% for item in searchable_items %}
-                <li>{{ item }}</li>
-            {% endfor %}
+            <li>水素</li>
+            <li>酸素</li>
+            <li>炭素</li>
+            <li>窒素</li>
+            <li>塩素</li>
+            <li>鉄</li>
+            <li>銅</li>
+            <li>金</li>
+            <li>銀</li>
+            <li>水</li>
+            <li>二酸化炭素</li>
         </ul>
     </main>
     <footer>
