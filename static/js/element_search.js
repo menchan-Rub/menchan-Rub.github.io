@@ -17,13 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
         '二酸化炭素': { name: '二酸化炭素', formula: 'CO2', molecular_weight: '44.009', iupac_name: 'Carbon dioxide' }
     };
 
-    // 検索可能な物質リストを表示
-    Object.keys(elementData).forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = item;
-        searchableList.appendChild(li);
-    });
-
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
